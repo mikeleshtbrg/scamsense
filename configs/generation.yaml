@@ -1,0 +1,17 @@
+# Synthetic chat generation. Scripts read this file; no hard-coded paths.
+model: gpt-5-mini
+temperature: 1.0
+seed: 42
+n_configs: 6000
+pilot_size: 50
+label_mix:
+  legit: 0.40
+  fake_middleman: 0.10
+  fake_payment: 0.10
+  item_swap: 0.10
+  phishing: 0.10
+  impersonation: 0.10
+  fake_support: 0.10
+paths:
+  out_raw: data/raw/synthetic/
+  log: results/experiment_logs/generation_log.jsonl

@@ -1,0 +1,30 @@
+# Python 3.12 (Google Colab default)
+# torch is preinstalled on Colab; on a local machine install it first: https://pytorch.org/get-started/
+
+# Data generation
+bespokelabs-curator>=0.1.20
+pydantic>=2.7
+python-dotenv>=1.0
+pyyaml>=6.0
+
+# Data handling
+pandas>=2.0
+numpy>=1.26
+datasets>=2.19
+tqdm>=4.66
+
+# Models
+torch>=2.2
+transformers>=4.44
+accelerate>=0.33
+sentencepiece>=0.2
+protobuf>=4.25
+sentence-transformers>=3.0
+bitsandbytes>=0.43; sys_platform == "linux"
+
+# Evaluation and plots
+scikit-learn>=1.4
+matplotlib>=3.8
+
+# Tests
+pytest>=8.0
