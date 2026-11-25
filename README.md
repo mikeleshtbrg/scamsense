@@ -12,6 +12,7 @@ Players trade skins and items on Steam, Roblox and Discord, and scams look like 
 scamsense/
 ├── README.md, requirements.txt, environment.yml, LICENSE, .env.example
 ├── slides/                  # proposal, midterm, final (PPTX + PDF)
+├── docs/                    # labeling guide and its change log
 ├── src/
 │   ├── data/                # generation, filtering, splits, prefixes
 │   ├── models/              # TF-IDF, zero-shot LLM, DeBERTa, MiniLM
@@ -45,7 +46,7 @@ _To be added: `visuals/visual_abstract.png`._
 
 _To be written: name, source, license, sample count, fields, preprocessing, splits, access, limitations for each dataset._
 
-Real chats are not committed. Only anonymized samples are kept in `data/samples/`.
+Real chats are not committed. Only anonymized samples are kept in `data/samples/`. Labeling rules (classes, hook, placeholders) are in [`docs/labeling_guide.md`](docs/labeling_guide.md); changes to them are logged in [`docs/labeling_guide_changelog.md`](docs/labeling_guide_changelog.md).
 
 ## 7. Models and Pipeline
 
