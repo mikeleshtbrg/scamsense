@@ -1,8 +1,9 @@
-# Python 3.12 (Google Colab default)
+# Main environment: Google Colab (Python 3.13) or local Python 3.12+
 # torch is preinstalled on Colab; on a local machine install it first: https://pytorch.org/get-started/
+# Synthetic data generation (Curator) has its own file: requirements-generation.txt
 
-# Data generation
-bespokelabs-curator>=0.1.20
+# LLM access and schemas
+openai>=1.60
 pydantic>=2.7
 python-dotenv>=1.0
 pyyaml>=6.0

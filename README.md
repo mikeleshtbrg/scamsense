@@ -10,7 +10,8 @@ Players trade skins and items on Steam, Roblox and Discord, and scams look like 
 
 ```
 scamsense/
-├── README.md, requirements.txt, environment.yml, LICENSE, .env.example
+├── README.md, requirements.txt, requirements-generation.txt,
+│   environment.yml, LICENSE, .env.example
 ├── slides/                  # proposal, midterm, final (PPTX + PDF)
 ├── docs/                    # labeling guide and its change log
 ├── src/
@@ -18,7 +19,7 @@ scamsense/
 │   ├── models/              # TF-IDF, zero-shot LLM, DeBERTa, MiniLM
 │   ├── training/            # fine-tuning
 │   ├── evaluation/          # macro-F1, alert time, data quality
-│   └── utils/               # seeding, logging, config loading
+│   └── utils/               # seeding, logging, config loading, API checks
 ├── notebooks/               # 01_data_exploration, 02_baseline, 03_experiments
 ├── data/
 │   ├── raw/                 # synthetic/ (generated); real/ is never committed
@@ -70,7 +71,7 @@ _To be written._
 
 ## Reproducibility
 
-Python 3.12. On Google Colab:
+**Main environment** (baselines, training, evaluation). On Google Colab (Python 3.13):
 
 ```bash
 git clone https://github.com/mikeleshtbrg/scamsense.git
@@ -80,6 +81,15 @@ cp .env.example .env   # then fill in the keys
 ```
 
 Locally with conda: `conda env create -f environment.yml && conda activate scamsense`.
+
+**Generation environment** (synthetic chats with Curator). Curator pins older versions of pandas and datasets, so it runs in its own Python 3.12 environment:
+
+```bash
+python -m venv .venv-gen
+.venv-gen\Scripts\activate        # Windows; on Linux/macOS: source .venv-gen/bin/activate
+pip install -r requirements-generation.txt
+python src/utils/check_azure.py    # checks the Azure OpenAI connection
+```
 
 Environment variables are listed in `.env.example`. Data preparation, training, evaluation and inference commands will be added as the pipeline is built.
 

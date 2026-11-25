@@ -1,0 +1,10 @@
+# Synthetic chat generation with Curator, in a separate environment.
+# Curator pins pandas==2.2.2 and datasets<4, which clash with Colab's
+# Python 3.13 stack, so run generation locally on Python 3.12:
+#   python -m venv .venv-gen && .venv-gen\Scripts\activate   (Windows)
+#   pip install -r requirements-generation.txt
+bespokelabs-curator>=0.1.31
+openai>=1.60
+pydantic>=2.7
+python-dotenv>=1.0
+pyyaml>=6.0
