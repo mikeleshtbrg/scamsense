@@ -1,0 +1,62 @@
+# Attribute space for synthetic chats. One chat = one sampled config.
+# Read by src/data/sample_configs.py. Label quotas, seed and n_configs are in generation.yaml.
+#
+# Each config has the label plus 8 attributes:
+#   legit_subtype, game, tactic, victim_reaction, item_value, style,
+#   length + hook_position, scam_word
+# Attributes that do not apply to a class are null (see comments below).
+
+legit_subtype:            # legit only; null for scam classes
+  normal_trade: 0.50      # half of legit is plain
+  hard_bargaining: 0.125  # the other half is tricky legit
+  official_middleman: 0.125
+  official_site_link: 0.125
+  honest_urgency: 0.125
+
+game: [cs2, dota2, tf2, rust, roblox, discord_server]
+
+tactic:                   # scam classes only; null for legit (the subtype plays that role).
+                          # Split groups: label + game + tactic for scams, label + game + legit_subtype for legit.
+  all: [friendly, urgent, authority, too_good_offer]
+  exclude:
+    phishing: [authority] # a staff claim + lookalike link is fake_support, not phishing
+
+victim_reaction:
+  scam: [trusting, hesitant, suspicious_but_falls, refuses_or_blocks]
+  legit: [trusting, hesitant, suspicious, declines_trade]   # declines_trade: walks away from an honest trade
+
+item_value: [low, mid, high]   # a category, never a price
+
+style: [heavy_slang, casual, typos, very_short]
+
+length:                   # number of messages ([EVENT] lines are not messages)
+  min: 6
+  max: 20
+
+hook_position: [early, middle, late]   # scam classes only; null for legit
+hook_min_msg: 3           # at least 2 messages before the hook, so there is something to warn on
+
+scam_word_rate: 0.10      # exactly this share of every class mentions "scam" etc.
+
+# Trade events are built in code from the config, never by the LLM.
+# Rates below are probabilities used by the event builder.
+events:
+  account_age_new:        # P(account_age=new) for a friend_request in this class
+    legit: 0.20
+    fake_middleman: 0.80
+    fake_payment: 0.60
+    item_swap: 0.50
+    phishing: 0.60
+    impersonation: 0.90
+    fake_support: 0.70
+  opening_friend_request: # P(a friend_request before the first message) where it is optional
+    legit: 0.50
+    fake_payment: 0.50
+    item_swap: 0.30
+    phishing: 0.50
+    fake_support: 0.30
+  legit_offer: 0.85          # some honest chats end before an offer (talks fall through)
+  legit_offer_changed: 0.15   # honest renegotiation in legit chats, so trade_offer_changed is not an item_swap giveaway
+  post_hook_offer:          # the victim sends the item after the hook, so trade_offer is not a legit giveaway
+    fake_middleman: 0.60
+    fake_payment: 0.60

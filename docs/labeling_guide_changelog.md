@@ -2,6 +2,14 @@
 
 Every change to `labeling_guide.md` is recorded here, newest first. Each entry says what changed and why. Update this file in the same commit as the guide.
 
+## v0.3 — 2026-11-27
+
+**Event lines (§5)**
+
+- The `[EVENT]` example now includes the `sender` key (`[EVENT] friend_request sender=other account_age=new`), and §5 points to `event_format.md` for the event types and allowed values.
+- Added: a real chat whose report shows no events has no `[EVENT]` lines.
+- Why: the event format is now defined in its own file, and every key of an event type is required, so the old example was no longer valid.
+
 ## v0.2 — 2026-11-25
 
 **Placeholders**

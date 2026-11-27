@@ -1,0 +1,66 @@
+{
+  "n_configs": 6000,
+  "label": {
+    "fake_middleman": 600,
+    "fake_payment": 600,
+    "fake_support": 600,
+    "impersonation": 600,
+    "item_swap": 600,
+    "legit": 2400,
+    "phishing": 600
+  },
+  "legit_subtype": {
+    "hard_bargaining": 300,
+    "honest_urgency": 300,
+    "normal_trade": 1200,
+    "official_middleman": 300,
+    "official_site_link": 300
+  },
+  "scam_word_by_label": {
+    "fake_middleman": 60,
+    "fake_payment": 60,
+    "fake_support": 60,
+    "impersonation": 60,
+    "item_swap": 60,
+    "legit": 240,
+    "phishing": 60
+  },
+  "events_by_label": {
+    "fake_middleman": {
+      "friend_request": 600,
+      "trade_offer": 294
+    },
+    "fake_payment": {
+      "friend_request": 318,
+      "trade_offer": 315
+    },
+    "fake_support": {
+      "friend_request": 783
+    },
+    "impersonation": {
+      "friend_request": 600
+    },
+    "item_swap": {
+      "friend_request": 198,
+      "trade_offer": 600,
+      "trade_offer_changed": 600
+    },
+    "legit": {
+      "friend_request": 1475,
+      "trade_offer": 2053,
+      "trade_offer_changed": 244
+    },
+    "phishing": {
+      "friend_request": 318
+    }
+  },
+  "account_age_new_by_label": {
+    "fake_middleman": 482,
+    "fake_payment": 181,
+    "fake_support": 549,
+    "impersonation": 546,
+    "item_swap": 100,
+    "legit": 321,
+    "phishing": 187
+  }
+}

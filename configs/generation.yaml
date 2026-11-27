@@ -13,5 +13,7 @@ label_mix:
   impersonation: 0.10
   fake_support: 0.10
 paths:
+  attribute_space: configs/attribute_space.yaml
+  configs_sampled: configs/sampled/
   out_raw: data/raw/synthetic/
   log: results/experiment_logs/generation_log.jsonl

@@ -58,7 +58,7 @@ Each chat gets **one primary label**: the scam type of its main harmful request,
 
 Real chats are anonymized before anything is saved or shared. Raw real chats are never committed (`data/raw/real/` is in `.gitignore`); only anonymized samples go into `data/samples/`. The same placeholders are used in synthetic chats.
 
-Format: one line per message, `<USER_WARN>: text`. Events go on their own line, `[EVENT] friend_request account_age=new`.
+Format: one line per message, `<USER_WARN>: text`. Trade events go on their own line right after the message where they happened, for example `[EVENT] friend_request sender=other account_age=new`. Event types and allowed values are defined in [`event_format.md`](event_format.md). If a real report shows no events, the chat has no `[EVENT]` lines.
 
 | Placeholder | Use |
 |---|---|
